@@ -1,6 +1,6 @@
 export default {
   // Gravitational acceleration
-  G: 10,
+  G: 2,
   // Coefficient of restitution
-  k: 10
+  k: 5
 }

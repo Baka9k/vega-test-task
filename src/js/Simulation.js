@@ -40,10 +40,13 @@ export default class BallSimulation {
   }
 
   start () {
-    setInterval(() => {
-      this.update()
-      this.draw()
-    })
+    const that = this
+    function repeatOften () {
+      that.update()
+      that.draw()
+      requestAnimationFrame(repeatOften)
+    }
+    requestAnimationFrame(repeatOften)
   }
 
 }
