@@ -1,3 +1,5 @@
+import Ball from './Ball'
+
 export default class World {
 
   constructor ({width, height, backgroundColor, floorColor, gridCellSize, gridLineWidth, gridLineColor}) {
@@ -56,10 +58,21 @@ export default class World {
     context.fillRect(0, this.floorY, this.width, this.floorHeight)
   }
 
+  addBall (x, y, radius, color) {
+    this.ball = new Ball(x, y, radius, color)
+  }
+
+  update () {
+
+  }
+
   draw (context) {
     this.drawBackground(context)
     this.drawGrid(context)
     this.drawFloor(context)
+    if (this.ball) {
+      this.ball.draw(context)
+    }
   }
 
 }

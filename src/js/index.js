@@ -1,4 +1,4 @@
-import BallSimulation from './ball-simulation'
+import Simulation from './Simulation'
 import '../scss/styles.scss'
 
 // Create canvas and set its size to fit #canvas-container div
@@ -9,6 +9,6 @@ canvas.height = element.clientHeight
 element.appendChild(canvas)
 
 // Start simulation in this canvas
-const simulation = new BallSimulation(canvas)
+const simulation = new Simulation(canvas)
 simulation.init()
 simulation.start()

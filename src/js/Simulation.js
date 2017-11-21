@@ -1,4 +1,4 @@
-import World from './world'
+import World from './World'
 
 export default class BallSimulation {
 
@@ -24,6 +24,7 @@ export default class BallSimulation {
       gridLineWidth: 0.3,
       gridLineColor: '#99CC99'
     })
+    this.world.addBall(300, 100, 30, '#000000')
   }
 
   draw () {
