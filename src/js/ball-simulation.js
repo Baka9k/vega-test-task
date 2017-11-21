@@ -1,4 +1,3 @@
-// import Ball from './ball'
 import World from './world'
 
 export default class BallSimulation {
@@ -16,7 +15,6 @@ export default class BallSimulation {
   }
 
   init () {
-    // this.ball = new Ball(20, '#ff0000')
     this.world = new World({
       width: this.width,
       height: this.height,

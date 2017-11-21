@@ -1,4 +1,4 @@
-export default class BallSimulation {
+export default class World {
 
   constructor ({width, height, backgroundColor, floorColor, gridCellSize, gridLineWidth, gridLineColor}) {
     this.width = width || 640
