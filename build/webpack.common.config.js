@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -14,6 +13,7 @@ const config = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'] },
       { test: /\.css$/, loaders: ['style-loader', 'css-loader'] }
     ]
   },
