@@ -21,7 +21,7 @@ export default class BallSimulation {
       width: this.width,
       height: this.height,
       backgroundColor: '#ffffff',
-      floorColor: '#cccccc',
+      floorColor: '#99CC99',
       gridCellSize: 24,
       gridLineWidth: 0.3,
       gridLineColor: '#99CC99'

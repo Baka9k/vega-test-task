@@ -16,6 +16,8 @@ export default class BallSimulation {
   calculateFloorPosition () {
     // Set floor height to 10% from world bottom line
     this.floorHeight = this.height / 100 * 10
+    // Make floor top fit to one of grid lines
+    this.floorHeight += this.floorHeight % this.gridCellSize
     this.floorY = this.height - this.floorHeight
   }
 
@@ -36,14 +38,12 @@ export default class BallSimulation {
     context.lineTo(toX, toY)
     context.closePath()
     context.stroke()
-    console.log(`Line: ${fromX}, ${fromY}, ${toX}, ${toY}`)
   }
 
   drawGrid (context, cellSize) {
     // Vertical lines
     for (let i = 0; i <= this.width; i += this.gridCellSize) {
       this.drawLine(context, i, 0, i, this.height)
-      console.log(i, this.width, this.gridCellSize)
     }
     // Horizontal lines
     for (let i = 0; i <= this.height; i += this.gridCellSize) {
