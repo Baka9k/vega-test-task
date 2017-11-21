@@ -1,4 +1,5 @@
 import World from './World'
+import Physics from './Physics'
 
 export default class BallSimulation {
 
@@ -43,6 +44,11 @@ export default class BallSimulation {
 
   resume () {
     this.paused = false
+  }
+
+  changePhysics (G = 2, k = 5) {
+    Physics.G = G
+    Physics.k = k
   }
 
   update () {

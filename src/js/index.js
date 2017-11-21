@@ -19,4 +19,9 @@ const pauseButton = document.getElementById('pause')
 const resetButton = document.getElementById('reset')
 startButton.onclick = e => simulation.resume()
 pauseButton.onclick = e => simulation.pause()
-resetButton.onclick = e => simulation.reset()
+resetButton.onclick = (e) => {
+  let G = Number(document.getElementById('gravity').value)
+  let k = Number(document.getElementById('restitution').value)
+  simulation.changePhysics(G, k)
+  simulation.reset()
+}
