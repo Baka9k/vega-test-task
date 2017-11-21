@@ -1,3 +1,5 @@
+import Physics from './Physics'
+
 export default class Ball {
 
   constructor (x, y, radius, color) {
@@ -6,7 +8,16 @@ export default class Ball {
     this.x = x || 0
     this.y = y || 0
     this.speed = 0
-    this.direction = 'down'
+  }
+
+  update () {
+    this.speed += Physics.G
+    this.y += this.speed
+  }
+
+  reverse () {
+    this.speed = -this.speed
+    this.speed -= Math.sign(this.speed) * Physics.k
   }
 
   draw (context) {

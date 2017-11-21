@@ -62,8 +62,18 @@ export default class World {
     this.ball = new Ball(x, y, radius, color)
   }
 
-  update () {
+  checkBallCollision () {
+    if ((this.ball.y + this.ball.radius) >= this.floorY) {
+      this.ball.y = this.floorY - this.ball.radius
+      this.ball.reverse()
+    }
+  }
 
+  update () {
+    if (this.ball) {
+      this.ball.update()
+      this.checkBallCollision()
+    }
   }
 
   draw (context) {

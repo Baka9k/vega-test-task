@@ -12,6 +12,10 @@ export default class BallSimulation {
     this.context = canvas.getContext('2d')
     this.width = canvas.width
     this.height = canvas.height
+    this.center = {
+      x: this.width / 2,
+      y: this.height / 2
+    }
   }
 
   init () {
@@ -24,16 +28,22 @@ export default class BallSimulation {
       gridLineWidth: 0.3,
       gridLineColor: '#99CC99'
     })
-    this.world.addBall(300, 100, 30, '#000000')
+    this.world.addBall(this.center.x, 100, 32, '#000000')
+  }
+
+  update () {
+    this.world.update()
   }
 
   draw () {
-    const ctx = this.context
-    this.world.draw(ctx)
+    this.world.draw(this.context)
   }
 
   start () {
-    this.draw()
+    setInterval(() => {
+      this.update()
+      this.draw()
+    })
   }
 
 }
