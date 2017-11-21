@@ -1,11 +1,14 @@
 export default class BallSimulation {
 
-  constructor (width, height, backgroundColor, floorColor) {
+  constructor ({width, height, backgroundColor, floorColor, gridCellSize, gridLineWidth, gridLineColor}) {
     this.width = width || 640
     this.height = height || 480
+    this.gridCellSize = gridCellSize
+    this.gridLineWidth = gridLineWidth
     this.colors = {
       background: backgroundColor || '#000000',
-      floor: floorColor || '#cccccc'
+      floor: floorColor || '#cccccc',
+      grid: gridLineColor
     }
     this.init()
   }
@@ -25,6 +28,29 @@ export default class BallSimulation {
     context.fillRect(0, 0, this.width, this.height)
   }
 
+  drawLine (context, fromX, fromY, toX, toY) {
+    context.strokeStyle = this.colors.grid
+    context.lineWidth = this.gridLineWidth
+    context.beginPath()
+    context.moveTo(fromX, fromY)
+    context.lineTo(toX, toY)
+    context.closePath()
+    context.stroke()
+    console.log(`Line: ${fromX}, ${fromY}, ${toX}, ${toY}`)
+  }
+
+  drawGrid (context, cellSize) {
+    // Vertical lines
+    for (let i = 0; i <= this.width; i += this.gridCellSize) {
+      this.drawLine(context, i, 0, i, this.height)
+      console.log(i, this.width, this.gridCellSize)
+    }
+    // Horizontal lines
+    for (let i = 0; i <= this.height; i += this.gridCellSize) {
+      this.drawLine(context, 0, i, this.width, i)
+    }
+  }
+
   drawFloor (context) {
     context.fillStyle = this.colors.floor
     context.fillRect(0, this.floorY, this.width, this.floorHeight)
@@ -32,6 +58,7 @@ export default class BallSimulation {
 
   draw (context) {
     this.drawBackground(context)
+    this.drawGrid(context)
     this.drawFloor(context)
   }
 

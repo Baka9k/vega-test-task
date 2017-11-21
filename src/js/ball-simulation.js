@@ -17,7 +17,15 @@ export default class BallSimulation {
 
   init () {
     // this.ball = new Ball(20, '#ff0000')
-    this.world = new World(this.width, this.height, '#000000', '#cccccc')
+    this.world = new World({
+      width: this.width,
+      height: this.height,
+      backgroundColor: '#ffffff',
+      floorColor: '#cccccc',
+      gridCellSize: 24,
+      gridLineWidth: 0.3,
+      gridLineColor: '#99CC99'
+    })
   }
 
   draw () {
