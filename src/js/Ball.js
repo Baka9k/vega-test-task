@@ -7,6 +7,7 @@ export default class Ball {
     this.color = color || '#000000'
     this.x = x || 0
     this.y = y || 0
+    this.initialY = y || 0
     this.speed = 0
   }
 
@@ -18,6 +19,11 @@ export default class Ball {
   reverse () {
     this.speed = -this.speed
     this.speed -= Math.sign(this.speed) * Physics.k
+  }
+
+  reset () {
+    this.y = this.initialY
+    this.speed = 0
   }
 
   draw (context) {

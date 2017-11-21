@@ -16,6 +16,7 @@ export default class BallSimulation {
       x: this.width / 2,
       y: this.height / 2
     }
+    this.paused = false
   }
 
   init () {
@@ -31,6 +32,19 @@ export default class BallSimulation {
     this.world.addBall(this.center.x, 100, 32, '#000000')
   }
 
+  reset () {
+    this.world.reset()
+    this.paused = false
+  }
+
+  pause () {
+    this.paused = true
+  }
+
+  resume () {
+    this.paused = false
+  }
+
   update () {
     this.world.update()
   }
@@ -41,12 +55,14 @@ export default class BallSimulation {
 
   start () {
     const that = this
-    function repeatOften () {
-      that.update()
-      that.draw()
-      requestAnimationFrame(repeatOften)
+    function animate () {
+      if (!that.paused) {
+        that.update()
+        that.draw()
+      }
+      requestAnimationFrame(animate)
     }
-    requestAnimationFrame(repeatOften)
+    this.animation = requestAnimationFrame(animate)
   }
 
 }

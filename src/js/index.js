@@ -12,3 +12,11 @@ element.appendChild(canvas)
 const simulation = new Simulation(canvas)
 simulation.init()
 simulation.start()
+
+// Init controls
+const startButton = document.getElementById('resume')
+const pauseButton = document.getElementById('pause')
+const resetButton = document.getElementById('reset')
+startButton.onclick = e => simulation.resume()
+pauseButton.onclick = e => simulation.pause()
+resetButton.onclick = e => simulation.reset()

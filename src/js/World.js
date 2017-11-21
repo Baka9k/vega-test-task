@@ -76,6 +76,12 @@ export default class World {
     }
   }
 
+  reset () {
+    if (this.ball) {
+      this.ball.reset()
+    }
+  }
+
   draw (context) {
     this.drawBackground(context)
     this.drawGrid(context)
